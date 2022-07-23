@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<math.h>
-#include<time.h>
 
 int okinawa=0;int fukuoka=1;int hiroshima=2;int osaka=3;int kyoto=4;
 int nagoya=5;int yokohama=6;int tokyo=7;int utsunomiya=8;int sapporo=9;
