@@ -10,12 +10,12 @@ int wakayama=10; int kanazawa=11; int karuizawa=12; int sendai=13; int aomori=14
 
 int kaisu=1;
 
- double min_dis=100000;//â‘Î‚ÉÅ¬‚É‚È‚ç‚È‚¢”’l‚ğˆê’U“ü‚ê‚Ä‚¨‚­
+ double min_dis=100000;//çµ¶å¯¾ã«æœ€å°ã«ãªã‚‰ãªã„æ•°å€¤ã‚’ä¸€æ—¦å…¥ã‚Œã¦ãŠã
  int temp[20];
  int tempcopy[20][20]; 
 
 
-/*********2‚Â‚Ì’n“_‚Ì‹——£‚ğŒvZ‚µ‚Ä•Ô‚·ŠÖ”************/
+/*********2ã¤ã®åœ°ç‚¹ã®è·é›¢ã‚’è¨ˆç®—ã—ã¦è¿”ã™é–¢æ•°************/
 double di_dis(int a,int b){
   double dis;
   int city_x[30];
@@ -41,25 +41,25 @@ double di_dis(int a,int b){
   return dis;
 }
 
-/**********i1‚Â‚Ìƒpƒ^[ƒ“‚É‚¨‚¯‚éj‘S‚Ä‚Ì’n“_‚ğ‚Â‚È‚¢‚¾‹——£‚ğ•Ô‚·ŠÖ”**********/
+/**********ï¼ˆ1ã¤ã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã«ãŠã‘ã‚‹ï¼‰å…¨ã¦ã®åœ°ç‚¹ã‚’ã¤ãªã„ã è·é›¢ã‚’è¿”ã™é–¢æ•°**********/
 double all_dis(int *num,int numlen){
   double all_dis_return=0;
 for(int i=0;i<numlen-1;i++){
   all_dis_return=all_dis_return+di_dis(num[i],num[i+1]);
 }
-all_dis_return=all_dis_return+di_dis(num[0],num[numlen-1]);//Å‰‚ÆÅŒã‚ğ‘«‚·B
+all_dis_return=all_dis_return+di_dis(num[0],num[numlen-1]);//æœ€åˆã¨æœ€å¾Œã‚’è¶³ã™ã€‚
 //double all_dis_return=di_dis(city1,city2)+di_dis(city2,city3)+di_dis(city3,city4)+di_dis(city4,city5)+di_dis(city5,city1);
 
 return all_dis_return;
 }
 
  int num=0;
-/******************Ä‹AŠÖ”*********************/
-void loop(int *city,int numlen1,int numlen2)//‚±‚Ì•”•ª‚ğ”z—ñ‚É•Ï‚¦‚½‚¢ //numlen2‚ğ•Ï‚¦‚é•û‚É‚·‚éB
+/******************å†å¸°é–¢æ•°*********************/
+void loop(int *city,int numlen1,int numlen2)//ã“ã®éƒ¨åˆ†ã‚’é…åˆ—ã«å¤‰ãˆãŸã„ //numlen2ã‚’å¤‰ãˆã‚‹æ–¹ã«ã™ã‚‹ã€‚
 {
     int e;
     int a=numlen1;
-    if(num==0){//Å‰‚¾‚¯ˆø”‚Æ‚µ‚ÄŒvZ‚·‚é
+    if(num==0){//æœ€åˆã ã‘å¼•æ•°ã¨ã—ã¦è¨ˆç®—ã™ã‚‹
     for(int i=0;i<numlen1;i++){
     temp[i]=city[i];
     }
@@ -74,15 +74,15 @@ void loop(int *city,int numlen1,int numlen2)//‚±‚Ì•”•ª‚ğ”z—ñ‚É•Ï‚¦‚½‚¢ //numlen2
 //printf("\n");
   for(int k=0;k<numlen2;k++){
     if(numlen2==2){
-          double ex_dis=all_dis(temp,sizeof(temp)/sizeof(int));//temp‚ÌƒAƒhƒŒƒX‚Ætemp‚Ì’·‚³‚ğ—^‚¦‚é
+          double ex_dis=all_dis(temp,sizeof(temp)/sizeof(int));//tempã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨tempã®é•·ã•ã‚’ä¸ãˆã‚‹
 
-        //  printf("%dƒpƒ^[ƒ“–Ú:%lf\n",kaisu,ex_dis);////•K—v
+          printf("%dãƒ‘ã‚¿ãƒ¼ãƒ³ç›®:%lf\n",kaisu,ex_dis);////å¿…è¦
 
           kaisu++;
          // printf("%d%d%d%d%d%d%d\n",temp[a-7],temp[a-6],temp[a-5],temp[a-4],temp[a-3],temp[a-2],temp[a-1]);
-          if(ex_dis<min_dis){//‚à‚µ‚»‚Ì“_‚ÌÅ¬’l‚æ‚è¬‚³‚¢‚Ì‚ªo‚½‚ç‚»‚Ì’l‚ğmin_dis‚É‘ã“ü
+          if(ex_dis<min_dis){//ã‚‚ã—ãã®æ™‚ç‚¹ã®æœ€å°å€¤ã‚ˆã‚Šå°ã•ã„ã®ãŒå‡ºãŸã‚‰ãã®å€¤ã‚’min_disã«ä»£å…¥
           min_dis=ex_dis;
-          //printf("Å¬’l‚ªXV‚³‚ê‚Ü‚µ‚½\n");
+          //printf("æœ€å°å€¤ãŒæ›´æ–°ã•ã‚Œã¾ã—ãŸ\n");
           }
   }
   else{
@@ -90,11 +90,11 @@ void loop(int *city,int numlen1,int numlen2)//‚±‚Ì•”•ª‚ğ”z—ñ‚É•Ï‚¦‚½‚¢ //numlen2
      loop(city,numlen1,numlen2-1);
      }
 
-//ƒ‹[ƒvÅŒã‚Ì
+//ãƒ«ãƒ¼ãƒ—æœ€å¾Œã®æ™‚
   if(k==numlen2-1)
   {
     for(int i=0;i<numlen2;i++){
-      temp[a-i-1]=tempcopy[a-i-1][numlen2-1];//‚ ‚és‚Ì”š‚Å”ä‚×‚½‚¢  
+      temp[a-i-1]=tempcopy[a-i-1][numlen2-1];//ã‚ã‚‹è¡Œã®æ•°å­—ã§æ¯”ã¹ãŸã„  
     }
     continue;
   }
@@ -104,18 +104,14 @@ void loop(int *city,int numlen1,int numlen2)//‚±‚Ì•”•ª‚ğ”z—ñ‚É•Ï‚¦‚½‚¢ //numlen2
   }
 }
 
-/*******************mainŠÖ”i‚Ç‚Ì“ss‚ğ’Ê‚é‚©‘I‘ğj***********************/
+/*******************mainé–¢æ•°ï¼ˆã©ã®éƒ½å¸‚ã‚’é€šã‚‹ã‹é¸æŠï¼‰***********************/
 int main(void){
-   //printf("Å¬‹——£F%lf\n",set(okinawa,fukuoka,hiroshima,osaka));
+   //printf("æœ€å°è·é›¢ï¼š%lf\n",set(okinawa,fukuoka,hiroshima,osaka));
    //,utsunomiya,sapporo,wakayama,kanazawa
    int city[]={okinawa,fukuoka,hiroshima,osaka,kyoto,nagoya};
    int numlen=sizeof(city)/sizeof(int);
 
-  clock_t start_clock, end_clock;
-  start_clock = clock();
-   loop(city,numlen,numlen);//”z—ñ‚ÌƒAƒhƒŒƒX‚Æ‚»‚Ì’·‚³
-   printf("Å¬’lF%lf",min_dis);
-   end_clock = clock();
-    printf( "clock:%f\n",(double)(end_clock - start_clock) / CLOCKS_PER_SEC);
+   loop(city,numlen,numlen);//é…åˆ—ã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ãã®é•·ã•
+   printf("æœ€å°å€¤ï¼š%lf",min_dis);
   return 0;
 }
